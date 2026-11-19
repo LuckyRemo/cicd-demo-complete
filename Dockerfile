@@ -16,4 +16,4 @@ COPY --from=builder /dist/*.whl /tmp/
 RUN python -m pip install --no-cache-dir /tmp/*.whl && rm -rf /tmp/*.whl
 
 USER app
-ENTRYPOINT ["pycicd-demo"]
+ENTRYPOINT ["cicd-demo-complete"]

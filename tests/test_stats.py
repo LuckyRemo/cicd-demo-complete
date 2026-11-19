@@ -1,6 +1,6 @@
 import pytest
 
-from pycicd_demo.stats import (
+from cicd_demo_complete.stats import (
     count_words,
     reading_time_minutes,
     summarize,

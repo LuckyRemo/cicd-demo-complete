@@ -3,7 +3,7 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pycicd-demo"
+name = "cicd-demo-complete"
 version = "0.1.0"
 description = "A tiny text-statistics CLI used to practise Python CI/CD with GitHub Actions."
 readme = "README.md"
@@ -29,7 +29,7 @@ dev = [
 ]
 
 [project.scripts]
-pycicd-demo = "pycicd_demo.cli:main"
+cicd-demo-complete = "cicd_demo_complete.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -47,7 +47,7 @@ select = ["E", "F", "I", "B", "UP"]
 
 [tool.coverage.run]
 branch = true
-source = ["pycicd_demo"]
+source = ["cicd_demo_complete"]
 
 [tool.coverage.report]
 show_missing = true

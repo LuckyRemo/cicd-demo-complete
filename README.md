@@ -1,4 +1,4 @@
-# pycicd-demo
+# cicd-demo-complete
 
 一个刻意做得很小、但流程完整的 Python 项目，用来练习 GitHub Actions 上的
 CI/CD：代码检查、跨版本测试、覆盖率、打包、GitHub Release、Docker 镜像发布。
@@ -6,7 +6,7 @@ CI/CD：代码检查、跨版本测试、覆盖率、打包、GitHub Release、D
 核心功能只有一个文本统计 CLI，业务逻辑不是重点，流水线才是。
 
 ```text
-$ pycicd-demo "Hello hello, CI/CD world!" --top 3
+$ cicd-demo-complete "Hello hello, CI/CD world!" --top 3
 words:          5
 unique words:   4
 reading time:   0.03 min
@@ -25,10 +25,10 @@ top words:
 │  │  ├─ ci.yml              # PR / push 到 main 时跑 CI
 │  │  └─ release.yml         # 推送 v* tag 时发布 Release + 镜像
 │  └─ dependabot.yml         # 每周自动升级依赖和 Actions
-├─ src/pycicd_demo/
+├─ src/cicd_demo_complete/
 │  ├─ stats.py               # 纯函数：分词、词频、阅读时长
 │  ├─ cli.py                 # argparse 命令行入口
-│  └─ __main__.py            # 支持 python -m pycicd_demo
+│  └─ __main__.py            # 支持 python -m cicd_demo_complete
 ├─ tests/                    # pytest 测试
 ├─ Dockerfile                # 多阶段构建，非 root 运行
 ├─ pyproject.toml            # 打包、pytest、ruff、coverage 配置
@@ -58,7 +58,7 @@ python -m pip install -e ".[dev]"
 跑测试、检查和打包：
 
 ```bash
-pytest --cov=pycicd_demo --cov-report=term-missing
+pytest --cov=cicd_demo_complete --cov-report=term-missing
 ruff check .
 ruff format --check .
 python -m build
@@ -67,9 +67,9 @@ python -m build
 体验 CLI：
 
 ```bash
-pycicd-demo "Hello hello, CI/CD world!" --top 3
-pycicd-demo "one two two" --json
-echo "alpha beta alpha" | pycicd-demo
+cicd-demo-complete "Hello hello, CI/CD world!" --top 3
+cicd-demo-complete "one two two" --json
+echo "alpha beta alpha" | cicd-demo-complete
 ```
 
 如果 `ruff format --check .` 报格式问题，执行 `ruff format .` 后重新提交即可。
@@ -140,7 +140,7 @@ git push origin v0.1.0
 然后：
 
 - **Releases** 页面会出现 `v0.1.0`，附带 `.whl` 和 `.tar.gz`；
-- **Packages** 页面会出现 `pycicd-demo` 镜像，标签包括 `0.1.0`、`0.1` 和 `sha-xxxx`。
+- **Packages** 页面会出现 `cicd-demo-complete` 镜像，标签包括 `0.1.0`、`0.1` 和 `sha-xxxx`。
 
 拉取并运行镜像（把 `<owner>` 换成你的用户名或组织）：
 
@@ -195,7 +195,7 @@ jobs:
 
 ```bash
 python -m pip install --index-url https://test.pypi.org/simple/ \
-  --extra-index-url https://pypi.org/simple/ pycicd-demo
+  --extra-index-url https://pypi.org/simple/ cicd-demo-complete
 ```
 
 ## 6. 可选：部署到自己的服务器
@@ -214,7 +214,7 @@ python -m pip install --index-url https://test.pypi.org/simple/ \
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           script: |
-            cd /opt/pycicd-demo
+            cd /opt/cicd-demo-complete
             docker compose pull
             docker compose up -d
 ```

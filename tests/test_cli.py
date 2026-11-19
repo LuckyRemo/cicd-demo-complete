@@ -3,7 +3,7 @@ import json
 
 import pytest
 
-from pycicd_demo.cli import main
+from cicd_demo_complete.cli import main
 
 
 def test_cli_prints_human_readable_summary(capsys):

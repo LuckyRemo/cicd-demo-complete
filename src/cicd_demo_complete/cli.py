@@ -13,7 +13,7 @@ from .stats import summarize
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="pycicd-demo",
+        prog="cicd-demo-complete",
         description="Count words in a string or on stdin.",
     )
     parser.add_argument(
